@@ -103,7 +103,8 @@ int isPrime(int n)
 {
     if(n==0 || n==1)
     return 0;
-    for(int i=2;i<=(int)sqrt(n);i++)
+    int i;
+    for(i=2;i<=(int)sqrt(n);i++)
     {
         if(n%i==0)
         return 0;
@@ -338,6 +339,7 @@ int isSmith(int n)
     return s1==s2?1:0;
 }
 
+
 int isVampire(int n)
 {
     int i,j,newnum,copy,c,d;
@@ -347,17 +349,17 @@ int isVampire(int n)
         {
             if(i*j==n && i*j<10000)
             {
-                newnum-i*100+j;
+                newnum=i*100+j;
                 copy=newnum;
                 c=0;
                 while(copy>0)
                 {
-                    d=copy/10;
+                    d=copy%10;
                     if(frequencyOfDigit(newnum,d)==frequencyOfDigit(n,d))
                     {
                         c++;
                     }
-                    copy/10;
+                    copy/=10;
                 }
                 if(c==4)
                 return 1;
